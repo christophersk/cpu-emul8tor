@@ -54,13 +54,12 @@ int main(int argc, char *argv[]) {
 
   while ((SP = getchar()) != EOF) {
     if (SP == '\n' || SP == ':' || SP == '$' || SP == ' ') {
-      PC++;
       F = 0;
+      PC++;
       memory[PC] = (uint8_t)SP;
       printf("line, %c\n", (char)memory[PC]);
     } else {
       F++;
-      PC++;
       // printf("%d", PC);
       if (F % 2 == 1) {
         B = hexToBinary(SP) << 4;
@@ -71,6 +70,7 @@ int main(int argc, char *argv[]) {
         C = hexToBinary(SP);
         printf("even: %c, %d\n", (char)SP, C);
         D = B + C;
+        PC++;
         memory[PC] = D;
         printf("mementry: %d\n", memory[PC]);
         C = 0;
